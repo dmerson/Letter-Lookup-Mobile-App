@@ -9,17 +9,21 @@ app.formView = kendo.observable({
             letterEntered: '',
             result:''
         },
-        submit: function() 
-        {
+        submit: function() {
+	        debugger;
            switch (formViewModel.fields.letterEntered.toLowerCase())
                 {
-                    case "a":
-                        alert("1. Yay.");
-                        break;
-                    default:
-                        alert("not implemented yet or not a letter");
+           	case "a":
+	           {
+		           formViewModel.fields.set("result", "1");
+		           break;
+	           }
+	           default:
+                    {
+	                    break;
+                    }
                 }
-           alert(formViewModel.fields.letterEntered);
+          
             
        	},
         cancel: function() {}
