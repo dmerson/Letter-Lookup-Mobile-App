@@ -3,13 +3,18 @@
 app.formView = kendo.observable({
 	onShow: function() {}
 });
-var convertModel = {
-	GetValue: function(valueToCheck) {
-		debugger;
+var convert = {
+	GetWordValue: function(valueToCheck) {
+		var finalTally = 0;
 		var lengthOfValue = valueToCheck.length;
+		
 		for (lengthOfValue; lengthOfValue > 0; lengthOfValue--) {
-			console.log(lengthOfValue);
+			var addToFinal = convert.GetLetterValue(valueToCheck[lengthOfValue -1]);
+			
+				finalTally = finalTally + addToFinal;
+			
 		}
+		return finalTally;
 
 	},
 	GetLetterValue:function(letterToCheck) {
@@ -36,11 +41,11 @@ var convertModel = {
 					return 2;
 					break;
 				}
-			case "d":
-			case "g":
+			case "m":
+			case "p":
 			case "b":
 			case "c":
-				{
+			{
 					
 					return 3;
 					break;
@@ -92,7 +97,8 @@ var convertModel = {
 		},
 		submit: function() {
 
-			formViewModel.fields.set("result", convertModel.GetLetterValue(formViewModel.fields.letterEntered.toLowerCase()));
+		
+			formViewModel.fields.set("result", convert.GetWordValue(formViewModel.fields.letterEntered.toLowerCase()));
 
 
 		},
